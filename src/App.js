@@ -79,13 +79,13 @@ function App() {
         <Navbar title="TextUtils" mode={mode} blueText={blueText} bluishMode={bluishMode} toggleMode={toggleMode} text={dark} />
         <Alert alert={alert} />
         <Routes>
-          <Route exact path='/First-React-App/' element=
+          <Route exact path='First-React-App/' element=
           {
             <div className="container my-5">
               <TextForm showAlert={showAlert} heading="Enter text to analyze" mode={mode} />
             </div>
           } />
-          <Route exact path='/First-React-App/about' element=
+          <Route exact path='First-React-App/about' element=
           {
             <div className="container my-5">
               <About />
