@@ -31,7 +31,7 @@ function App() {
   const toggleMode = () => {
     if (mode === 'light') {
       setMode('dark');
-      document.body.style.backgroundColor = 'black';
+      document.body.style.backgroundColor = 'rgb(2, 14, 30)';
       setDark('Disable Dark Mode');
       showAlert("Dark mode Enabled", "success");
       // setInterval(() => {
@@ -50,23 +50,22 @@ function App() {
     }
   }
 
-  const [blueText, setBlueText] = useState('Enable Bluish Mode');
+  const [blackText, setBlackText] = useState('Enable Black Mode');
 
 
-  const bluishMode = () => {
-    if (mode === 'dark') {
-      if (document.body.style.backgroundColor === 'black') {
-        document.body.style.backgroundColor = '#020e1e';
-        setBlueText('Disable Bluish Mode');
-        showAlert("Bluish mode Enabled", "success")
+  const blackMode = () => {
+      if (mode === 'dark') {
+        if (document.body.style.backgroundColor === 'rgb(2, 14, 30)') {
+          document.body.style.backgroundColor = 'black';
+          setBlackText('Disable Black Mode');
+          showAlert("Black Mode Enabled", "success");
+        }
+        else {
+          document.body.style.backgroundColor = 'rgb(2, 14, 30)';
+          setBlackText('Enable Black Mode');
+          showAlert("Black Mode Disabled", "success");
+        }
       }
-
-      else {
-        document.body.style.backgroundColor = 'black';
-        setBlueText('Enable Bluish Mode');
-        showAlert("Bluish mode Disabled", "success")
-      }
-    }
   }
 
 
@@ -76,7 +75,7 @@ function App() {
       {/* <Navbar/> */}
 
       <BrowserRouter>
-        <Navbar title="TextUtils" mode={mode} blueText={blueText} bluishMode={bluishMode} toggleMode={toggleMode} text={dark} />
+        <Navbar title="TextUtils" mode={mode} blackText={blackText} blackMode={blackMode} toggleMode={toggleMode} text={dark} />
         <Alert alert={alert} />
         <Routes>
           <Route exact path='First-React-App/' element=
@@ -88,7 +87,7 @@ function App() {
           <Route exact path='First-React-App/about' element=
           {
             <div className="container my-5">
-              <About />
+              <About mode={mode} />
             </div>
           } />
         </Routes>

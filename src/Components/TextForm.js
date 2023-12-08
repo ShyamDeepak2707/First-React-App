@@ -19,7 +19,6 @@ export default function TextForm(props) {
     }
 
     const handelOnChange = (event) => {
-        console.log('On Change');
         uText(event.target.value);
     }
 
@@ -31,6 +30,7 @@ export default function TextForm(props) {
     const handleCpoyText = () => {
         let text = document.getElementById('myBox');
         text.select();
+        document.getSelection().removeAllRanges();
         navigator.clipboard.writeText(text.value);
         props.showAlert("Text copied to Clipboard!", "success")
     }
@@ -40,9 +40,6 @@ export default function TextForm(props) {
         uText(newText.join(" "));
         props.showAlert("Extra space removed!", "success")
     }
-
-    const wordsArray = text.trim().split(/\s+/).filter(word => word !== '');
-    const wordCount = wordsArray.length;
 
     // Then use `wordCount` instead of `text.split(' ').length` for the word count.
 
@@ -55,20 +52,20 @@ export default function TextForm(props) {
             <div className='cotainer' style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
                 <h1>{props.heading}</h1>
                 <div className="form-group">
-                    <textarea className="form-control text-area" style={{ backgroundColor: props.mode === 'light' ? 'white' : 'gray', color: props.mode === 'light' ? 'black' : 'white', position: 'relative', zIndex: 0, cursor: 'text' }} value={text} onChange={handelOnChange} id="myBox" rows="8" ></textarea>
-                    <button className="btn btn-primary mx-1 my-2" onClick={handelUpclick}>Convert to Uppercase</button>
-                    <button className="btn btn-primary mx-1 my-2" onClick={handelLowclick}>Convert to Lowercase</button>
-                    <button className="btn btn-primary mx-1 my-2" onClick={handelClsclick}>Clear</button>
-                    <button className="btn btn-primary mx-1 my-2" onClick={handleCpoyText}>Copy Text</button>
-                    <button className="btn btn-primary mx-1 my-2" onClick={handelSpaceRemove}>Remove Extra Space</button>
+                    <textarea className="form-control text-area" style={{ backgroundColor: props.mode === 'dark' && document.body.style.backgroundColor === 'black' ? 'black' : props.mode === 'dark' ? 'rgb(2, 42, 92)' : 'white', color: props.mode === 'light' ? 'black' : 'white', position: 'relative', zIndex: 0, cursor: 'text' }} value={text} onChange={handelOnChange} id="myBox" rows="8" ></textarea>
+                    <button className="btn btn-primary mx-1 my-2" disabled= {text.length === 0} onClick={handelUpclick}>Convert to Uppercase</button>
+                    <button className="btn btn-primary mx-1 my-2" disabled= {text.length === 0} onClick={handelLowclick}>Convert to Lowercase</button>
+                    <button className="btn btn-primary mx-1 my-2" disabled= {text.length === 0} onClick={handelClsclick}>Clear</button>
+                    <button className="btn btn-primary mx-1 my-2" disabled= {text.length === 0} onClick={handleCpoyText}>Copy Text</button>
+                    <button className="btn btn-primary mx-1 my-2" disabled= {text.length === 0} onClick={handelSpaceRemove}>Remove Extra Space</button>
                 </div>
             </div>
             <div className="container my-3" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
                 <h1>Your text summary</h1>
-                <p>{wordCount} words and {text.length} characters</p>
-                <p>{Math.round(0.008 * wordCount)} Minutes to read this</p>
+                <p>{text.split(" ").filter((element) => { return element.length !== 0 }).length} words and {text.length} characters</p>
+                <p>{0.008 * text.split(" ").filter((element) => { return element.length !== 0}).length} Minutes to read this</p>
                 <h2>Preview</h2>
-                <p>{text.length > 0 ? text : 'Enter your text in the above box to preview here'}</p>
+                <p>{text.length > 0 ? text : 'Nothing to preview!'}</p>
             </div>
         </>
     )

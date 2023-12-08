@@ -1,88 +1,76 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function About() {
+export default function About(props) {
 
 
-    const [mystyle, setMyStyle] = useState({
-        color: 'black',
-        backgroundColor: 'white'
-    });
+    // const [myStyle, setmyStyle] = useState({
+    //     color: 'black',
+    //     backgroundColor: 'white'
+    // });
 
-    const [darkModeText, setDarkModeText] = useState("Enable Dark Mode")
+    let myStyle = {
+        color : props.mode === 'dark' ? 'white' : 'black',
+        backgroundColor : props.mode === 'dark' && document.body.style.backgroundColor === 'black' ? 'black' : props.mode === 'dark' ? 'rgb(1, 28, 61)' : 'white',
 
-    const toggleStyle = () => {
-        if (mystyle.color === 'white') {
-            setMyStyle({
-                color: 'black',
-                backgroundColor: 'white'
-            })
-
-                setDarkModeText("Enable Dark Mode")
-        }
-
-        else {
-            setMyStyle({
-                color: 'white',
-                backgroundColor: 'black',
-                border: '0.5px solid white'
-            })
-
-            setDarkModeText("Enable Light Mode")
-        }
     }
 
+
     return (
-        <div className="container" style={mystyle}>
+        <div className="container" style={{color : props.mode === 'dark' ? 'white' : 'black'}}>
             <div>
                 <h1>About Us</h1>
-                <div className="accordion" id="accordionExample">
-                    <div className="card">
-                        <div className="card-header" style={mystyle} id="headingOne">
-                            <h5 className="mb-0">
-                                <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" style={mystyle} aria-expanded="true" aria-controls="collapseOne">
-                                    Collapsible Group Item #1
-                                </button>
-                            </h5>
-                        </div>
+                <div className="accordion" id="accordionPanelsStayOpenExample">
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" style={myStyle}>
+                            <button className="accordion-button" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                <strong>Text-Utils: Your Ultimate Text Manipulation Tool</strong>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" style={myStyle} className="accordion-collapse collapse show">
+                            <div className="accordion-body"  style={myStyle}>
+                                Text-Utils is a powerful React app designed to streamline text manipulation tasks, providing a range of functionalities that enhance the way you handle text. With a user-friendly interface and efficient tools, Text-Utils simplifies text editing for various purposes. <br /> <br />
 
-                        <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" style={mystyle}>
-                            <div className="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                About Text-Utils <br />
+                                Text-Utils is a versatile application that offers several key features: <br /> <br />
+
+                                <strong>Text Case Conversion:</strong> Easily convert text between uppercase and lowercase, catering to your specific formatting needs. <br />
+
+                                <strong>Whitespace Management:</strong> Effortlessly remove extra spaces, trim leading and trailing spaces, ensuring clean and consistent text formatting. <br />
+
+                                <strong>Clipboard Integration:</strong> Seamlessly copy the modified text to your clipboard for quick and convenient usage in other applications.
                             </div>
                         </div>
                     </div>
-                    <div className="card">
-                        <div className="card-header" style={mystyle} id="headingTwo">
-                            <h5 className="mb-0">
-                                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" style={mystyle} aria-expanded="false" aria-controls="collapseTwo">
-                                    Collapsible Group Item #2
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style={mystyle}>
-                            <div className="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" style={myStyle}>
+                            <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                <strong>Our Vision for Text-Utils</strong>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" style={myStyle} className="accordion-collapse collapse">
+                            <div className="accordion-body">
+                                At Text-Utils, our goal is to empower users with a reliable platform for text manipulation. We aim to simplify complex text-editing tasks, providing an intuitive interface coupled with robust functionalities. <br /> <br />
+
+                                Commitment to User Convenience
+                                We are committed to enhancing user experience by continuously updating and incorporating new features that cater to our users' evolving needs. Text-Utils strives to be the go-to tool for effortless text modification, offering a seamless and efficient experience.
                             </div>
                         </div>
                     </div>
-                    <div className="card">
-                        <div className="card-header" style={mystyle} id="headingThree">
-                            <h5 className="mb-0">
-                                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" style={mystyle} aria-expanded="false" aria-controls="collapseThree">
-                                    Collapsible Group Item #3
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style={mystyle}>
-                            <div className="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" style={myStyle}>
+                            <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                <strong>The Team Behind Text-Utils</strong>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" style={myStyle} className="accordion-collapse collapse">
+                            <div className="accordion-body">
+                                Text-Utils is brought to you by a dedicated team of developers passionate about simplifying text manipulation tasks. Our team's collective goal is to create an application that enhances productivity and makes text editing hassle-free. <br /> <br />
+
+                                Feel free to incorporate this information or modify it to fit your About Us section in the Text-Utils React app. Adjust the tone or details as per your preference and the specific goals of your application.
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="container">
-                <button type="button" onClick={toggleStyle} className="btn btn-primary my-3">{darkModeText}</button>
             </div>
         </div>
     )

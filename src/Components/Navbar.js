@@ -1,4 +1,4 @@
-// import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
@@ -30,11 +30,11 @@ export default function Navbar(props) {
           </form> */}
 
         </div>
-        <div className={`form-check text-${props.mode === 'light' ? 'dark' : 'light'}`} id='hidden-mode' style={{visibility: props.mode === 'light' ? 'hidden' : 'visible'}}>
-          <input className="form-check-input" onClick={props.bluishMode} role='button' type="checkbox" value="" id="defaultCheck1"/>
-            <label className="form-check-label" role='button' htmlFor="defaultCheck1">
-              {props.blueText}
-            </label>
+        <div className={`form-check text-${props.mode === 'light' ? 'dark' : 'light'}`} id='hidden-mode' style={{ visibility: props.mode === 'light' ? 'hidden' : 'visible' }}>
+          <input className="form-check-input" onClick={props.blackMode} role='button' type="checkbox" value="" id="defaultCheck1" />
+          <label className="form-check-label" role='button' htmlFor="defaultCheck1">
+            {props.blackText}
+          </label>
         </div>
         <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'} mx-4`}>
           <input className="form-check-input" type="checkbox" style={{ cursor: 'pointer' }} onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault" />
