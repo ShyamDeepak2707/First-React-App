@@ -18,17 +18,12 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link className="nav-link active" to="First-React-App/">Home</Link>
+              <Link className="nav-link " to="First-React-App/">Home</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="First-React-App/about">{props.aboutText}</Link>
             </li>
           </ul>
-          {/* <form classNameName="form-inline my-2 my-lg-0">
-            <input classNameName="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-            <button classNameName="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-          </form> */}
-
         </div>
         <div className={`form-check text-${props.mode === 'light' ? 'dark' : 'light'}`} id='hidden-mode' style={{ visibility: props.mode === 'light' ? 'hidden' : 'visible' }}>
           <input className="form-check-input" onClick={props.blackMode} role='button' type="checkbox" value="" id="defaultCheck1" />
