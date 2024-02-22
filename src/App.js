@@ -92,13 +92,6 @@ function App() {
           } />
         </Routes>
       </BrowserRouter>
-
-      {/* <Alert alert={alert} /> */}
-      {/* <div className="container my-5"> */}
-      {/* <About /> */}
-      {/* <TextForm showAlert={showAlert} heading="Enter text to analyze" mode={mode} /> */}
-      {/* </div> */}
-
     </>
   );
 }
